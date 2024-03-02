@@ -1,0 +1,6 @@
+@UberPopug.TaskTracker_HostAddress = http://localhost:5018
+
+GET {{UberPopug.TaskTracker_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

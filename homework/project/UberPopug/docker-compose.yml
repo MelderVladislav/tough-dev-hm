@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  uberpopug:
+    image: ${DOCKER_REGISTRY-}uberpopug
+    build:
+      context: .
+      dockerfile: UberPopug/Dockerfile
