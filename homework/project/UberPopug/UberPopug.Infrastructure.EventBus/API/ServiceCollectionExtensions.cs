@@ -4,6 +4,5 @@ public static class ServiceCollectionExtensions
 {
     public static void AddEventBus()
     {
-        
     }
 }

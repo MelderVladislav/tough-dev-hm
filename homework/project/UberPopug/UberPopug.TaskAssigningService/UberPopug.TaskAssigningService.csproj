@@ -7,4 +7,15 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\UberPopug.Domains.Core\UberPopug.Domains.Core.csproj" />
+      <ProjectReference Include="..\UberPopug.Domains.TaskTracking\UberPopug.Domains.TaskTracking.csproj" />
+      <ProjectReference Include="..\UberPopug.Infrastructure.EventBus\UberPopug.Infrastructure.EventBus.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
+      <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
+    </ItemGroup>
+
 </Project>
