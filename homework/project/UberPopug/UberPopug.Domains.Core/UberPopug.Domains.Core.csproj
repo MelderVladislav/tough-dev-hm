@@ -7,7 +7,15 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Events\" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.2"/>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\UberPopug.Infrastructure.EventBus\UberPopug.Infrastructure.EventBus.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Infrastructure\" />
     </ItemGroup>
 
 </Project>

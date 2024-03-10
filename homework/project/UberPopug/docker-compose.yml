@@ -6,3 +6,8 @@ services:
     build:
       context: .
       dockerfile: UberPopug/Dockerfile
+      
+  rabbitmq:
+    image: rabbitmq:3.10.7-management
+    ports:
+      - 15672:15672

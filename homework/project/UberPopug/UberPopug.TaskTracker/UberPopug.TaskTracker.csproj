@@ -11,4 +11,9 @@
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0"/>
     </ItemGroup>
 
+    <ItemGroup>
+        <ProjectReference Include="..\UberPopug.Domains.Auth\UberPopug.Domains.Auth.csproj"/>
+        <ProjectReference Include="..\UberPopug.Domains.TaskTracking\UberPopug.Domains.TaskTracking.csproj" />
+    </ItemGroup>
+
 </Project>
