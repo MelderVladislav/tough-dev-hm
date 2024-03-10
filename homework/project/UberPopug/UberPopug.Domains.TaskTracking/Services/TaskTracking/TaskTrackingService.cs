@@ -1,6 +1,6 @@
 ﻿using System.Linq.Expressions;
+using UberPopug.Domains.Core.Entities;
 using UberPopug.Domains.Core.Events;
-using UberPopug.Domains.TaskTracking.Entities;
 using UberPopug.Domains.TaskTracking.Stores;
 using UberPopug.Infrastructure.EventBus.API;
 
