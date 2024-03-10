@@ -1,4 +1,6 @@
-﻿using UberPopug.Domains.Core;
+﻿using Microsoft.EntityFrameworkCore;
+using UberPopug.Domains.Core;
+using UberPopug.Domains.Core.Entities;
 
 namespace UberPopug.Domains.Billing.Services;
 
@@ -11,8 +13,19 @@ public class BillingService: IBillingService
         this.coreDatabaseContext = coreDatabaseContext;
     }
 
-    public Task<decimal> GetBalance(Guid userId)
+    public async Task<decimal> GetBalance(Guid userId)
     {
-        throw new NotImplementedException();
+        var userDebit = await coreDatabaseContext.BillsOperations.Where(t => t.UserId == userId && t.IsDebit)
+            .SumAsync(t => t.Sum);
+
+        var userCredit = await coreDatabaseContext.BillsOperations.Where(t => t.UserId == userId && !t.IsDebit)
+            .SumAsync(t => t.Sum);
+
+        return userDebit = userCredit;
+    }
+    
+    public async Task<BillOperation[]> GetOperationsLog(Guid userId)
+    {
+        return await coreDatabaseContext.BillsOperations.Where(t => t.UserId == userId).ToArrayAsync();
     }
 }

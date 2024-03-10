@@ -21,9 +21,18 @@ public class BillingController : ControllerBase
     
     [Authorize(Roles = Roles.Engineer)]
     [HttpGet("Balance")]
-    public async Task<IActionResult> GetStatistics()
+    public async Task<IActionResult> GetBalance()
     {
         var result = await billingService.GetBalance(userContext.UserId!.Value);
+
+        return Ok(result);
+    }
+    
+    [Authorize(Roles = Roles.Engineer)]
+    [HttpGet("Operations")]
+    public async Task<IActionResult> GetOperations()
+    {
+        var result = await billingService.GetOperationsLog(userContext.UserId!.Value);
 
         return Ok(result);
     }
