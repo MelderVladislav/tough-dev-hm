@@ -4,6 +4,8 @@ public class WorkTask
 {
     public Guid Id { get; set; }
 
+    public int ScopedId { get; set; }
+
     public string Title { get; set; }
 
     public decimal Price { get; set; }
