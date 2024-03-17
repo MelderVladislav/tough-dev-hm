@@ -1,27 +1,23 @@
-﻿using UberPopug.Domains.Auth.API;
-using UberPopug.Domains.Auth.Models;
+﻿using UberPopug.Domains.Auth.Models;
 using UberPopug.Domains.Auth.Models.Token;
 using UberPopug.Domains.Auth.Services.Context;
 using UberPopug.Domains.Auth.Services.Identity;
 using UberPopug.Domains.Core.Entities;
 using UberPopug.Domains.Core.Errors;
 using UberPopug.Domains.Core.Events;
-using UberPopug.Infrastructure.EventBus.API;
 
 namespace UberPopug.Domains.Auth.Services.Users;
 
 internal class UserService : IUserService
 {
     private readonly IIdentityService<User> identityService;
-    private readonly IUserContext userContext;
-    private readonly IEventBus eventBus;
+    private readonly ILoggingEventBus eventBus;
 
     public UserService(IIdentityService<User> identityService,
-        IEventBus eventBus,
+        ILoggingEventBus eventBus,
         IUserContext userContext)
     {
         this.identityService = identityService;
-        this.userContext = userContext;
         this.eventBus = eventBus;
     }
 

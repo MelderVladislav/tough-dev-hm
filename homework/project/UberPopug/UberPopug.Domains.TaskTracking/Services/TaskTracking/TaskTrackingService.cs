@@ -3,17 +3,16 @@ using System.Text.RegularExpressions;
 using UberPopug.Domains.Core.Entities;
 using UberPopug.Domains.Core.Events;
 using UberPopug.Domains.TaskTracking.Stores;
-using UberPopug.Infrastructure.EventBus.API;
 
 namespace UberPopug.Domains.TaskTracking.Services.TaskTracking;
 
 public class TaskTrackingService
 {
     private readonly EntityStore<WorkTask> tasksTrackingStore;
-    private readonly IEventBus eventBus;
+    private readonly ILoggingEventBus eventBus;
     private Regex titleRegex = new Regex(@"\\[.*?\\]");
     
-    public TaskTrackingService(EntityStore<WorkTask> tasksTrackingStore, IEventBus eventBus)
+    public TaskTrackingService(EntityStore<WorkTask> tasksTrackingStore, ILoggingEventBus eventBus)
     {
         this.tasksTrackingStore = tasksTrackingStore;
         this.eventBus = eventBus;
@@ -51,6 +50,16 @@ public class TaskTrackingService
         var task = await tasksTrackingStore.Find(request.TaskId);
         task.Title = request.Title;
         task.Description = request.Description;
+        
+        await tasksTrackingStore.Update(task);
+
+        return task;
+    }
+    
+    public async Task<WorkTask> AssignTask(Guid taskId, Guid userId)
+    {
+        var task = await tasksTrackingStore.Find(taskId);
+        task.AssignedUser = userId;
         
         await tasksTrackingStore.Update(task);
 

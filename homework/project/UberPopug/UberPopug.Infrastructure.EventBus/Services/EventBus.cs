@@ -47,6 +47,17 @@ public class EventBus : IEventBus, IDisposable
             null,
             body);
     }
+    
+    public void Publish(string eventName, string eventJsonBody)
+    {
+        channel.ExchangeDeclare(exchangeName, ExchangeType.Direct);
+        var body = Encoding.UTF8.GetBytes(eventJsonBody);
+
+        channel.BasicPublish(exchangeName,
+            eventName,
+            null,
+            body);
+    }
 
     public void Subscribe<T, TH>()
         where T : IEventModel

@@ -10,10 +10,12 @@ namespace UberPopug.BillingService.Handlers;
 public class BalanceCalculatingHandler : IEventHandler<CalculateUsersBalanceEvent>
 {
     private readonly ICoreDatabaseContext coreDatabaseContext;
-
-    public BalanceCalculatingHandler(ICoreDatabaseContext coreDatabaseContext)
+    private readonly IEventsStore eventsStore;
+    
+    public BalanceCalculatingHandler(ICoreDatabaseContext coreDatabaseContext, IEventsStore eventsStore)
     {
         this.coreDatabaseContext = coreDatabaseContext;
+        this.eventsStore = eventsStore;
     }
     
     public async Task Handle(CalculateUsersBalanceEvent eventModel)
@@ -34,6 +36,8 @@ public class BalanceCalculatingHandler : IEventHandler<CalculateUsersBalanceEven
 
             await coreDatabaseContext.BillsOperations.AddRangeAsync(userBillPOperations);
         }
+
+        await eventsStore.MarkEventAsReceived(eventModel.EventId);
 
         await coreDatabaseContext.SaveChangesAsync();
     }

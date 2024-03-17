@@ -4,5 +4,5 @@ namespace UberPopug.Domains.Core.Events;
 
 public class CalculateUsersBalanceEvent: IEventModel
 {
-    
+    public Guid EventId { get; set; } = Guid.NewGuid();
 }

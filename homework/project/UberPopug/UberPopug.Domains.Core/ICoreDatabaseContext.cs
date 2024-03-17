@@ -5,9 +5,13 @@ namespace UberPopug.Domains.Core;
 
 public interface ICoreDatabaseContext
 {
-    public DbSet<WorkTask> WorkTasks { get; set; }
+    DbSet<WorkTask> WorkTasks { get; set; }
     
-    public DbSet<BillOperation> BillsOperations { get; set; }
-    
+    DbSet<BillOperation> BillsOperations { get; set; }
+
+    DbSet<SentEvent> SentEvents { get; set; }
+
+    Task<ICollection<Guid>> GetEngineersId();
+
     Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
 }

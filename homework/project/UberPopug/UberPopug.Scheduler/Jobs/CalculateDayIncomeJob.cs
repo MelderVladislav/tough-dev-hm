@@ -1,13 +1,12 @@
 ﻿using UberPopug.Domains.Core.Events;
-using UberPopug.Infrastructure.EventBus.API;
 
 namespace UberPopug.Scheduler.Jobs;
 
 public class CalculateDayIncomeJob
 {
-    private readonly IEventBus eventBus;
+    private readonly ILoggingEventBus eventBus;
 
-    public CalculateDayIncomeJob(IEventBus eventBus)
+    public CalculateDayIncomeJob(ILoggingEventBus eventBus)
     {
         this.eventBus = eventBus;
     }

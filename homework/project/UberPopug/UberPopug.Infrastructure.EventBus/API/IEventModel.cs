@@ -2,4 +2,5 @@
 
 public interface IEventModel
 {
+    public Guid EventId { get; set; }
 }

@@ -4,6 +4,8 @@ namespace UberPopug.Domains.Core.Events;
 
 public class UserCreated : IEventModel
 {
+    public Guid EventId { get; set; } = Guid.NewGuid();
+    
     public Guid UserId { get; set; }
 
     public string Login { get; set; }

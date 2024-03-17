@@ -11,6 +11,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\UberPopug.Domains.Auth\UberPopug.Domains.Auth.csproj" />
       <ProjectReference Include="..\UberPopug.Domains.Core\UberPopug.Domains.Core.csproj" />
     </ItemGroup>
 
