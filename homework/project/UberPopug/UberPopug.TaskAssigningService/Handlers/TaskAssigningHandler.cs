@@ -1,8 +1,8 @@
-﻿using UberPopug.Domains.Core.Events;
-using UberPopug.Domains.TaskTracking.Entities;
+﻿using UberPopug.Domains.Core.Entities;
+using UberPopug.Domains.Core.Events;
 using UberPopug.Domains.TaskTracking.Services.TaskTracking;
 using UberPopug.Infrastructure.EventBus.API;
-using TaskStatus = UberPopug.Domains.TaskTracking.Entities.TaskStatus;
+using TaskStatus = UberPopug.Domains.Core.Entities.TaskStatus;
 
 namespace UberPopug.TaskAssigningService.Handlers;
 

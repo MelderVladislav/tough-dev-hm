@@ -1,0 +1,6 @@
+@UberPopug.Billing_HostAddress = http://localhost:5035
+
+GET {{UberPopug.Billing_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

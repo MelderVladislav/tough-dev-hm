@@ -1,10 +1,14 @@
-﻿namespace UberPopug.Domains.TaskTracking.Entities;
+﻿namespace UberPopug.Domains.Core.Entities;
 
 public class WorkTask
 {
     public Guid Id { get; set; }
 
+    public int ScopedId { get; set; }
+
     public string Title { get; set; }
+
+    public decimal Price { get; set; }
 
     public string? Description { get; set; }
 

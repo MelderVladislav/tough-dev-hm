@@ -1,6 +1,7 @@
 ﻿using System.Linq.Expressions;
+using System.Text.RegularExpressions;
+using UberPopug.Domains.Core.Entities;
 using UberPopug.Domains.Core.Events;
-using UberPopug.Domains.TaskTracking.Entities;
 using UberPopug.Domains.TaskTracking.Stores;
 using UberPopug.Infrastructure.EventBus.API;
 
@@ -10,6 +11,7 @@ public class TaskTrackingService
 {
     private readonly EntityStore<WorkTask> tasksTrackingStore;
     private readonly IEventBus eventBus;
+    private Regex titleRegex = new Regex(@"\\[.*?\\]");
     
     public TaskTrackingService(EntityStore<WorkTask> tasksTrackingStore, IEventBus eventBus)
     {
@@ -21,7 +23,7 @@ public class TaskTrackingService
     {
         var task = new WorkTask
         {
-            Title = request.Title,
+            Title = titleRegex.Replace(request.Title, "").Trim(),
             AuthorId = userId,
             Description = request.Description
         };
